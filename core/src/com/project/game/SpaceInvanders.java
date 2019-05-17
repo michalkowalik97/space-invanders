@@ -1,33 +1,32 @@
 package com.project.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.Game;
+import com.project.game.screens.MenuScreen;
 
-public class SpaceInvanders extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
+
+public class SpaceInvanders extends Game {
+	public static final int WIDTH = 800;
+	public static final int HEIGHT = 600;
+
+
+	private boolean paused;
 	
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture(Gdx.files.internal("B:\\Users\\Michal\\Desktop\\STUDIA\\Semestr IV\\Programowanie obiektowe (java)\\SpaceInvanders\\core\\assets\\badlogic.jpg"));
+		this.setScreen(new MenuScreen(this));
 	}
 
-	@Override
-	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
+
+	/*
+	*
+	* GETTERS AND SETTERS
+	 */
+	public boolean isPaused() {
+		return paused;
 	}
-	
-	@Override
-	public void dispose () {
-		batch.dispose();
-		img.dispose();
+
+	public void setPaused(boolean paused) {
+		this.paused = paused;
 	}
+
 }

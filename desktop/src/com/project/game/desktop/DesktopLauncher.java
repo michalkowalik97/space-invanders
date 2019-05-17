@@ -7,6 +7,10 @@ import com.project.game.SpaceInvanders;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.title = "Space invanders";
+		config.width = SpaceInvanders.WIDTH;
+		config.height = SpaceInvanders.HEIGHT;
+		config.resizable = false;
 		new LwjglApplication(new SpaceInvanders(), config);
 	}
 }
