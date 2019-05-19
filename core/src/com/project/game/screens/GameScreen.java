@@ -8,6 +8,9 @@ public class GameScreen extends AbstractScreen {
         init();
     }
 
-    private void init() {
+    @Override
+    protected void init() {
+
     }
+
 }

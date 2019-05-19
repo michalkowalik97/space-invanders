@@ -5,8 +5,9 @@ import com.project.game.screens.MenuScreen;
 
 
 public class SpaceInvanders extends Game {
-	public static final int WIDTH = 800;
-	public static final int HEIGHT = 600;
+	public static final int WIDTH = 1920;
+	public static final int HEIGHT = 1080;
+	public final String assets = "B:\\Users\\Michal\\Desktop\\STUDIA\\Semestr IV\\Programowanie obiektowe (java)\\SpaceInvanders\\core\\assets\\";
 
 
 	private boolean paused;

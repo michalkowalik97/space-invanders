@@ -11,6 +11,7 @@ public class DesktopLauncher {
 		config.width = SpaceInvanders.WIDTH;
 		config.height = SpaceInvanders.HEIGHT;
 		config.resizable = false;
+		config.fullscreen = true;
 		new LwjglApplication(new SpaceInvanders(), config);
 	}
 }
