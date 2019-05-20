@@ -15,6 +15,8 @@ public class MenuScreen extends AbstractScreen {
 
     private Button palyButton;
     private Button settingsButton;
+    private Button hiScooresButton;
+    private Button infoButton;
     private Button exitButton;
 
     public MenuScreen(SpaceInvanders game) {
@@ -31,11 +33,20 @@ public class MenuScreen extends AbstractScreen {
     }
 
     private void initButtons() {
+        initPlayButton();
+        initSettingsButton();
+        initInfoButton();
+        initExitButton();
+    }
+
+
+
+    private void initPlayButton() {
         palyButton = new Button(new Button.ButtonStyle());
         palyButton.setWidth(546);
         palyButton.setHeight(184);
-        palyButton.setX(1331);
-        palyButton.setY(545);
+        palyButton.setX(1093);
+        palyButton.setY(663);
         palyButton.setDebug(true);
 
         stage.addActor(palyButton);
@@ -44,17 +55,18 @@ public class MenuScreen extends AbstractScreen {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
-                palyButton.setX(settingsButton.getY() - 20);
+                game.setScreen(new GameScreen(game));
                 return super.touchDown(event, x, y, pointer, button);
             }
         });
+    }
 
-
+    private void initSettingsButton() {
         settingsButton = new Button(new Button.ButtonStyle());
         settingsButton.setWidth(546);
         settingsButton.setHeight(184);
-        settingsButton.setX(1331);
-        settingsButton.setY(344);
+        settingsButton.setX(1093);
+        settingsButton.setY(447);
         settingsButton.setDebug(true);
 
         stage.addActor(settingsButton);
@@ -62,17 +74,40 @@ public class MenuScreen extends AbstractScreen {
         settingsButton.addListener(new ClickListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                //Gdx.app.exit();
-                settingsButton.setX(settingsButton.getX() - 20);
+
+                game.setScreen(new SettingsScreen(game));
                 return super.touchDown(event, x, y, pointer, button);
             }
         });
+    }
 
+
+    private void initInfoButton() {
+        infoButton = new Button(new Button.ButtonStyle());
+        infoButton.setWidth(546);
+        infoButton.setHeight(184);
+        infoButton.setX(308);
+        infoButton.setY(447);
+        infoButton.setDebug(true);
+
+        stage.addActor(infoButton);
+
+        infoButton.addListener(new ClickListener(){
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                game.setScreen(new InfoScreen(game));
+                return super.touchDown(event, x, y, pointer, button);
+            }
+        });
+    }
+
+
+    private void initExitButton() {
         exitButton = new Button(new Button.ButtonStyle());
         exitButton.setWidth(546);
         exitButton.setHeight(184);
-        exitButton.setX(1331);
-        exitButton.setY(139);
+        exitButton.setX(643);
+        exitButton.setY(32);
         exitButton.setDebug(true);
 
         stage.addActor(exitButton);
@@ -84,11 +119,10 @@ public class MenuScreen extends AbstractScreen {
                 return super.touchDown(event, x, y, pointer, button);
             }
         });
-
     }
 
     private void initImages() {
-        menuImage = new Texture(Gdx.files.internal(game.assets + "menu.png"));
+        menuImage = new Texture(Gdx.files.internal(game.assets + "menu2.png"));
 
         image = new Image(menuImage);
         image.setPosition(0, 0);

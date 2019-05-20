@@ -11,7 +11,10 @@ public class SpaceInvanders extends Game {
 
 
 	private boolean paused;
-	
+
+
+
+	private boolean mute;
 	@Override
 	public void create () {
 		this.setScreen(new MenuScreen(this));
@@ -23,11 +26,20 @@ public class SpaceInvanders extends Game {
 	* GETTERS AND SETTERS
 	 */
 	public boolean isPaused() {
+
 		return paused;
 	}
 
 	public void setPaused(boolean paused) {
+
 		this.paused = paused;
 	}
 
+	public boolean isMute() {
+		return mute;
+	}
+
+	public void setMute(boolean mute) {
+		this.mute = mute;
+	}
 }
