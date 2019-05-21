@@ -26,7 +26,7 @@ public class MenuScreen extends AbstractScreen {
 
     @Override
     protected void init() {
-        initImages();
+        initGraphics();
         initButtons();
 
 
@@ -83,6 +83,7 @@ public class MenuScreen extends AbstractScreen {
 
 
     private void initInfoButton() {
+
         infoButton = new Button(new Button.ButtonStyle());
         infoButton.setWidth(546);
         infoButton.setHeight(184);
@@ -121,8 +122,8 @@ public class MenuScreen extends AbstractScreen {
         });
     }
 
-    private void initImages() {
-        menuImage = new Texture(Gdx.files.internal(game.assets + "menu2.png"));
+    private void initGraphics() {
+        menuImage = new Texture(Gdx.files.internal(game.assets + "menu.png"));
 
         image = new Image(menuImage);
         image.setPosition(0, 0);
