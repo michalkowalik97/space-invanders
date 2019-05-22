@@ -28,8 +28,9 @@ public class SpaceInvanders extends Game {
     }
 
     /*
-     *
+     *--------------------
      * GETTERS AND SETTERS
+     *
      */
     public boolean isPaused() {
 

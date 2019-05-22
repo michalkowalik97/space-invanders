@@ -1,12 +1,14 @@
 package com.project.game.actors;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.project.game.shootInterfaces.shootInterface;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.project.game.shootBehavior.ShootInterface;
 
 public abstract class Spacecraft extends Actor {
 
-    protected shootInterface shootBehavior;
+    protected ShootInterface shootBehavior;
     protected int lifes;
     protected final int WIDTH;
     protected final int HEIGHT;
@@ -19,9 +21,10 @@ public abstract class Spacecraft extends Actor {
         this.WIDTH = width;
         this.HEIGHT = height;
         this.setLifes(lifes);
+        init();
     }
 
-    public void setShoot(shootInterface sh) {
+    public void setShoot(ShootInterface sh) {
         this.shootBehavior = sh;
     }
 
@@ -56,14 +59,21 @@ public abstract class Spacecraft extends Actor {
     }
 
     /*
+     *-------------------
      *GETTERS AND SETTERS
+     *
      */
     public int getLifes() {
+
         return lifes;
     }
 
     public void setLifes(int lifes) {
         this.lifes = lifes;
+    }
+
+    public void setMoveSpeed(float moveSpeed) {
+        this.moveSpeed = moveSpeed;
     }
 
 }
