@@ -2,15 +2,14 @@ package com.project.game.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.project.game.SpaceInvanders;
 
 public class GameScreen extends AbstractScreen {
+    Image testImage;
 
     public GameScreen(SpaceInvanders game) {
         super(game);
@@ -22,34 +21,46 @@ public class GameScreen extends AbstractScreen {
         initGraphics();
     }
 
-    private void initGraphics() {
-        Texture test = new Texture(Gdx.files.internal(game.assets + "badlogic.jpg"));
-        final Image testImage = new Image(test);
-        testImage.setPosition(100, 100);
-        stage.addActor(testImage);
-        Actor actor = new Actor();
-
-        testImage.addListener(new InputListener(){
-            @Override
-            public boolean keyDown(InputEvent event, int keycode) {
-
-                return super.keyDown(event, keycode);
-            }
-        });
-
-    }
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        stage.act(Gdx.graphics.getDeltaTime());
+        super.render(delta);
+        update();
+        handleKeyInput();
+
+        spriteBatch.begin();
         stage.draw();
+        spriteBatch.end();
+    }
 
-        if(Gdx.input.isKeyPressed(Input.Keys.A)){
-            System.out.println("A");
-
+    //temporary in this class
+    private void handleKeyInput() {
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+            moveUp();
         }
     }
 
+    //temporary in this class
+    private void moveUp() {
+        Action moveUP = Actions.moveBy(0, 10, 0.3f);
+        testImage.addAction(moveUP);
+    }
+
+    private void update() {
+        stage.act();
+    }
+
+    private void initGraphics() {
+        testImage = new Image(new Texture(Gdx.files.internal(game.assets + "badlogic.jpg")));
+        testImage.setX(100);
+        testImage.setY(100);
+
+        stage.addActor(testImage);
+
+        //TO DO
+        //testImage.addCaptureListener()
+        // OR
+        //testImage.addListener()
+        //OR other way to handle keyboard input
+    }
 }

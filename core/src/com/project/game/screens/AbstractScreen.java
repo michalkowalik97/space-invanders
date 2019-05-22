@@ -13,7 +13,7 @@ public abstract class AbstractScreen implements Screen {
     protected SpaceInvanders game;
     protected Stage stage;
     private OrthographicCamera camera;
-    private SpriteBatch spriteBatch;
+    protected SpriteBatch spriteBatch;
 
     public AbstractScreen(SpaceInvanders game){
         this.game = game;
