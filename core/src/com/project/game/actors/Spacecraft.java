@@ -1,21 +1,18 @@
 package com.project.game.actors;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.project.game.shootBehavior.ShootInterface;
 
 public abstract class Spacecraft extends Actor {
 
-    protected ShootInterface shootBehavior;
-    protected int lifes;
+    public final String assets = "B:\\Users\\Michal\\Desktop\\STUDIA\\Semestr IV\\Programowanie obiektowe (java)\\SpaceInvanders\\core\\assets\\game\\";
     protected final int WIDTH;
     protected final int HEIGHT;
+    protected ShootInterface shootBehavior;
+    protected int lifes;
     protected float moveSpeed = 10;
 
-
-    protected abstract void init();
 
     public Spacecraft(int width, int height, int lifes) {
         this.WIDTH = width;
@@ -24,37 +21,28 @@ public abstract class Spacecraft extends Actor {
         init();
     }
 
-    public void setShoot(ShootInterface sh) {
-        this.shootBehavior = sh;
-    }
+    protected abstract void init();
 
 
-    public void addLife() {
-        this.lifes ++;
-    }
-
-    public void substactLife() {
-        if (lifes > 0)
-            lifes -= 1;
-    }
-
-    protected void moveUp() {
+    public void moveUp() {
         this.addAction(Actions.moveBy(0, moveSpeed, 0.3f));
     }
 
-    protected void moveDown() {
+    public void moveDown() {
+
         this.addAction(Actions.moveBy(0, -moveSpeed, 0.3f));
     }
 
-    protected void moveLeft() {
+    public void moveLeft() {
         this.addAction(Actions.moveBy(-moveSpeed, 0, 0.3f));
     }
 
-    protected void moveRight() {
+    public void moveRight() {
+
         this.addAction(Actions.moveBy(moveSpeed, 0, 0.3f));
     }
 
-    public void shoot(){
+    public void shoot() {
         this.shootBehavior.shoot();
     }
 
@@ -68,6 +56,15 @@ public abstract class Spacecraft extends Actor {
         return lifes;
     }
 
+    public void addLife() {
+        this.lifes++;
+    }
+
+    public void substactLife() {
+        if (lifes > 0)
+            lifes -= 1;
+    }
+
     public void setLifes(int lifes) {
         this.lifes = lifes;
     }
@@ -76,4 +73,7 @@ public abstract class Spacecraft extends Actor {
         this.moveSpeed = moveSpeed;
     }
 
+    public void setShootBehavior(ShootInterface sh) {
+        this.shootBehavior = sh;
+    }
 }
